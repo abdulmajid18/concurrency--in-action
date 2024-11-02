@@ -45,6 +45,7 @@ void do_something_else() {
     std::cout << "Doing something else in the background...\n";
 }
 
+// In this version, std::thread is initialized with a lambda function ([] { ... }), which defines the thread’s actions directly in the constructor.
 std::thread my_threads([] {
     do_something();
     do_something_else();
