@@ -8,6 +8,15 @@ struct Counters {
     std::atomic<size_t> counter2;
 };
 
+constexpr size_t CACHE_LINE_SIZE = 64;
+
+
+// struct Counters {
+//     std::atomic<size_t> counter1;
+//     char padding[CACHE_LINE_SIZE - sizeof(std::atomic<size_t>)];
+//     std::atomic<size_t> counter2;
+// };
+
 void increment_counter(std::atomic<size_t>& counter) {
     for (int i = 0; i < 1'000'000; ++i)
     {
