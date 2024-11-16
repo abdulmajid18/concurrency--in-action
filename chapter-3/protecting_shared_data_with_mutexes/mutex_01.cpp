@@ -14,6 +14,9 @@ void increment_counter(int count) {
     }
 }
 
+
+// Deadlocks: Always ensure that lock() is followed by unlock(). If an exception is thrown between these calls, the mutex will not be unlocked.
+// Prefer std::lock_guard: To avoid manual lock and unlock calls, use std::lock_guard for safer locking.
 void incrementCounter(int numIncrements) {
     for (int i = 0; i < numIncrements; ++i) {
         std::lock_guard<std::mutex> guard(mtx); // Automatically locks and unlocks
